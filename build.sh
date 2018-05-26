@@ -1,4 +1,4 @@
-DIR=~/Documents/breadIngredientsConverter;
+DIR=~/Documents/metricBaker;
 CLASSPATH_MAIN=$DIR/src/main/java:$DIR/lib/*;
 CLASSPATH_TEST=$DIR/src/main/java:$DIR/lib/*:$DIR/src/test/java;
 
