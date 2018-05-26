@@ -21,4 +21,10 @@ public class IngredientConverterTest {
     assertEquals(expectedWeight, actualWeight);
   }
 
+  @Test
+  public void shouldConvertSugarFromCupToGram(){
+    int expectedWeight = 201;
+    int actualWeight = converter.convert("sugar", 1f);
+    assertEquals(expectedWeight, actualWeight);
+  }
 }

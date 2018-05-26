@@ -1,6 +1,7 @@
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.junit.Ignore;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import java.io.PrintStream;
@@ -23,12 +24,21 @@ public class AcceptanceTest{
   }
 
   @Test
-  public void AcceptanceConvertFlourTest(){
+  public void ConvertFlourTest(){
 
     BreadIngredientsConverter.main(new String[] {"Flour", "2", "cup"});
 
-    assertEquals("274",this.baos.toString());
+    assertEquals("274",getActualResult());
   }
+
+
+  @Test
+  public void ConvertSugarTest(){
+    BreadIngredientsConverter.main(new String[] {"sugar", "1", "cup"});
+
+    assertEquals("201", this.baos.toString());
+  }
+
 
 
   private void redirectSystemOut(){
@@ -40,6 +50,10 @@ public class AcceptanceTest{
 
   private void resetSystemOut(){
     System.setOut(originalOutputStream);
+  }
+
+  private String getActualResult(){
+    return this.baos.toString();
   }
 
 
