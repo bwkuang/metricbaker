@@ -8,7 +8,7 @@ public class BreadIngredientsConverter{
     float amount = Float.parseFloat(args[1]);
     String unit = args[2];
 
-    int result = converter.convert(ingredient, amount);
+    int result = converter.convert(ingredient, amount, unit);
 
     System.out.print(result);
 

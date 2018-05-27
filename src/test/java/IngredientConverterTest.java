@@ -16,7 +16,7 @@ public class IngredientConverterTest {
   @Test
   public void shouldConvertFlourFromCupToGram(){
     int expectedWeight = 137;
-    int actualWeight = converter.convert(1f);
+    int actualWeight = converter.convert("flour", 1f, "cup");
 
     assertEquals(expectedWeight, actualWeight);
   }
@@ -24,7 +24,14 @@ public class IngredientConverterTest {
   @Test
   public void shouldConvertSugarFromCupToGram(){
     int expectedWeight = 201;
-    int actualWeight = converter.convert("sugar", 1f);
+    int actualWeight = converter.convert("sugar", 1f, "cup");
+    assertEquals(expectedWeight, actualWeight);
+  }
+
+  @Test
+  public void shouldConvertSaltFromTeaspoonToGram(){
+    int expectedWeight = 3;
+    int actualWeight = converter.convert("salt", 0.5f, "teaspoon");
     assertEquals(expectedWeight, actualWeight);
   }
 }

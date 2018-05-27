@@ -36,10 +36,15 @@ public class AcceptanceTest{
   public void ConvertSugarTest(){
     BreadIngredientsConverter.main(new String[] {"sugar", "1", "cup"});
 
-    assertEquals("201", this.baos.toString());
+    assertEquals("201", getActualResult());
   }
 
+  @Test
+  public void ConvertSaltTest(){
+    BreadIngredientsConverter.main(new String[] {"salt", "0.5", "teaspoon"});
 
+    assertEquals("3", getActualResult());
+  }
 
   private void redirectSystemOut(){
     this.originalOutputStream = System.out;
