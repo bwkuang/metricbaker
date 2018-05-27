@@ -13,18 +13,21 @@ public class IngredientConverter{
   public int convert(String ingredient, float amount, String unit){
 
     float volume = getVolumeByUnit(unit);
+    float density = getDensityByIngredient(ingredient);
 
-    if ("flour".compareToIgnoreCase(ingredient) == 0){
-      return Math.round(amount * volume * this.breadFlourDensity);
-    }
-    else if ("sugar".compareToIgnoreCase(ingredient) == 0){
-      return Math.round(amount * volume * this.sugarDensity);
-    }
-    else if ("salt".compareToIgnoreCase(ingredient) == 0){
-      return Math.round(amount * volume * this.saltDensity);
-    }
-
-    return 0;
+    return Math.round(amount * volume * density);
+    //
+    // if ("flour".compareToIgnoreCase(ingredient) == 0){
+    //   return Math.round(amount * volume * this.breadFlourDensity);
+    // }
+    // else if ("sugar".compareToIgnoreCase(ingredient) == 0){
+    //   return Math.round(amount * volume * this.sugarDensity);
+    // }
+    // else if ("salt".compareToIgnoreCase(ingredient) == 0){
+    //   return Math.round(amount * volume * this.saltDensity);
+    // }
+    //
+    // return 0;
   }
 
   private float getVolumeByUnit(String unit){
@@ -37,6 +40,22 @@ public class IngredientConverter{
       volume = this.cupVolume;
     }
     return volume;
+  }
+
+  private float getDensityByIngredient(String ingredient){
+    float density = 0f;
+
+    if ("flour".compareToIgnoreCase(ingredient) == 0){
+      density = this.breadFlourDensity;
+    }
+    else if ("sugar".compareToIgnoreCase(ingredient) == 0){
+      density = this.sugarDensity;
+    }
+    else if ("salt".compareToIgnoreCase(ingredient) == 0){
+      density = this.saltDensity;
+    }
+
+    return density;
   }
 
 }
