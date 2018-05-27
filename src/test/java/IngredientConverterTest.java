@@ -34,4 +34,11 @@ public class IngredientConverterTest {
     int actualWeight = converter.convert("salt", 0.5f, "teaspoon");
     assertEquals(expectedWeight, actualWeight);
   }
+
+  @Test
+  public void shouldConvertButterFromPoundToGram(){
+    int expectedWeight = 113;
+    int actualWeight = converter.convert("butter", 0.25f, "pound");
+    assertEquals(expectedWeight, actualWeight);
+  }
 }

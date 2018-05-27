@@ -46,6 +46,13 @@ public class AcceptanceTest{
     assertEquals("3", getActualResult());
   }
 
+  @Test
+  public void ConvertButterTest(){
+    BreadIngredientsConverter.main(new String[] {"butter", "0.25", "pound"});
+
+    assertEquals("113", getActualResult());
+  }
+
   private void redirectSystemOut(){
     this.originalOutputStream = System.out;
     this.baos = new ByteArrayOutputStream();
