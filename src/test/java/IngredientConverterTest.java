@@ -41,4 +41,11 @@ public class IngredientConverterTest {
     int actualWeight = converter.convert("butter", 0.25f, "pound");
     assertEquals(expectedWeight, actualWeight);
   }
+
+  @Test
+  public void shouldConvertButterFromKiloToGram(){
+    int expectedWeight = 1250;
+    int actualWeight = converter.convert("butter", 1.25f, "kilo");
+    assertEquals(expectedWeight, actualWeight);
+  }
 }

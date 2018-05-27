@@ -8,6 +8,7 @@ public class IngredientConverter{
   private float teaSpoonVolume = 5;
 
   private float poundMass = 453.592f;
+  private float kiloMass = 1000f;
 
   public int convert(float numberOfCups){
     return Math.round(numberOfCups * this.cupVolume * this.breadFlourDensity);
@@ -28,6 +29,9 @@ public class IngredientConverter{
 
     if("pound".compareToIgnoreCase(unit) == 0){
       mass = this.poundMass;
+    }
+    else if ("kilo".compareToIgnoreCase(unit) == 0 || "kilogramme".compareToIgnoreCase(unit) == 0 || "kg".compareToIgnoreCase(unit) == 0){
+      mass = this.kiloMass;
     }
     return mass;
   }
