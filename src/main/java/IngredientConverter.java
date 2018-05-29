@@ -1,14 +1,31 @@
 public class IngredientConverter{
 
+
+  private float allPurposeFlour = 0.53f;
   private float breadFlourDensity = 0.58f;
   private float sugarDensity = 0.85f;
   private float saltDensity = 1.25f;
+  private float waterDensity = 1f;
+  private float milkDensity = 1.03f;
+  private float cremeDensity = 1.01f;
+  private float powderMilk = 0.449f;
+  private float instantYeast = 0.6f;
 
-  private float cupVolume = 236;
-  private float teaSpoonVolume = 5;
+  private float cupVolume = 236f;
+  private float teaSpoonVolume = 5f;
+  private float tablespoonVolume = 15f;
+  private float fluidOzVolume = 30f;
+ 	private float literVolume = 1000f;
+  private float mlVolume = 1f;
+
 
   private float poundMass = 453.592f;
   private float kiloMass = 1000f;
+  private float ozMass= 28.3495f;
+  private float gramMass = 1f;
+
+  // Countable Ingredients
+  private float largeEggMass = 60f;
 
   public int convert(float numberOfCups){
     return Math.round(numberOfCups * this.cupVolume * this.breadFlourDensity);
