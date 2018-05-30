@@ -26,7 +26,7 @@ public class AcceptanceTest{
   @Test
   public void ConvertFlourTest(){
 
-    BreadIngredientsConverter.main(new String[] {"Flour", "2", "cup"});
+    BreadIngredientsConverter.main(new String[] {"bread Flour", "2", "cup"});
 
     assertEquals("274",getActualResult());
   }

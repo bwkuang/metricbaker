@@ -16,7 +16,7 @@ public class IngredientConverterTest {
   @Test
   public void shouldConvertFlourFromCupToGram(){
     int expectedWeight = 137;
-    int actualWeight = converter.convert("flour", 1f, "cup");
+    int actualWeight = converter.convert("Bread flour", 1f, "cup");
 
     assertEquals(expectedWeight, actualWeight);
   }

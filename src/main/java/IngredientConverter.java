@@ -65,22 +65,19 @@ public class IngredientConverter{
     return volume;
   }
 
+
+
   private float getDensityByIngredient(String ingredient){
     float density = 0f;
 
-    if ("flour".compareToIgnoreCase(ingredient) == 0){
-      density = this.breadFlourDensity;
-    }
-    else if ("sugar".compareToIgnoreCase(ingredient) == 0){
-      density = this.sugarDensity;
-    }
-    else if ("salt".compareToIgnoreCase(ingredient) == 0){
-      density = this.saltDensity;
+    for(IngredientDensity d : IngredientDensity.values()){
+      if(d.getName().compareToIgnoreCase(ingredient) == 0){
+        density = d.getDensity();
+      }
     }
 
     return density;
   }
-
 
 
 
