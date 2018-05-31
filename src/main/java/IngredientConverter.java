@@ -1,15 +1,6 @@
 public class IngredientConverter{
 
 
-  private float allPurposeFlour = 0.53f;
-  private float breadFlourDensity = 0.58f;
-  private float sugarDensity = 0.85f;
-  private float saltDensity = 1.25f;
-  private float waterDensity = 1f;
-  private float milkDensity = 1.03f;
-  private float cremeDensity = 1.01f;
-  private float powderMilk = 0.449f;
-  private float instantYeast = 0.6f;
 
   private float cupVolume = 236f;
   private float teaSpoonVolume = 5f;
@@ -26,10 +17,6 @@ public class IngredientConverter{
 
   // Countable Ingredients
   private float largeEggMass = 60f;
-
-  public int convert(float numberOfCups){
-    return Math.round(numberOfCups * this.cupVolume * this.breadFlourDensity);
-  }
 
   public int convert(String ingredient, float amount, String unit){
     float massInGramsForOneUnit = getGramsByMassUnit(unit);
@@ -65,20 +52,16 @@ public class IngredientConverter{
     return volume;
   }
 
-
-
   private float getDensityByIngredient(String ingredient){
     float density = 0f;
 
     for(IngredientDensity d : IngredientDensity.values()){
-      if(d.getName().compareToIgnoreCase(ingredient) == 0){
+      if(d.getIngredientName().compareToIgnoreCase(ingredient) == 0){
         density = d.getDensity();
       }
     }
 
     return density;
   }
-
-
 
 }
