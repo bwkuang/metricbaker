@@ -43,12 +43,12 @@ public class IngredientConverter{
   private float getVolumeByUnit(String unit){
     float volume = 0f;
 
-    if ("teaspoon".compareToIgnoreCase(unit) == 0){
-      volume = this.teaSpoonVolume;
+    for(UnitOfVolume u : UnitOfVolume.values()){
+      if(u.getUnitName().compareToIgnoreCase(unit) == 0){
+        volume = u.getVolume();
+      }
     }
-    else if ("cup".compareToIgnoreCase(unit) == 0){
-      volume = this.cupVolume;
-    }
+
     return volume;
   }
 
