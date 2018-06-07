@@ -1,4 +1,5 @@
-DIR=~/Documents/metricBaker;
+# DIR=~/Documents/metricBaker;
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 CLASSPATH_MAIN=$DIR/src/main/java:$DIR/lib/*;
 CLASSPATH_TEST=$DIR/src/main/java:$DIR/lib/*:$DIR/src/test/java;
 
