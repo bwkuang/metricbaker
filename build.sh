@@ -1,11 +1,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-CLASSPATH_JAR=$(echo lib/*.jar | tr ' ' ':');
-CLASSPATH_MAIN=$DIR/src/main/java:$CLASSPATH_JAR;
-CLASSPATH_TEST=$DIR/src/main/java:$DIR/src/test/java:$CLASSPATH_JAR;
+FOLDER_MAIN_CLASSES=$DIR/build/classes/main/
+FOLDER_TEST_CLASSES=$DIR/build/classes/test/
 
+CLASSPATH_JAR=$(echo libs/*.jar | tr ' ' ':');
+CLASSPATH_MAIN=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR;
+CLASSPATH_TEST=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR:$FOLDER_TEST_CLASSES;
 
 # Compile main application
-javac -cp $CLASSPATH_MAIN $DIR/src/main/java/*.java;
+javac -d $FOLDER_MAIN_CLASSES -cp $CLASSPATH_MAIN $DIR/src/main/java/*.java;
 
 # Compile tests
-javac -cp $CLASSPATH_TEST -Xlint:deprecation $DIR/src/test/java/*.java;
+javac -d $FOLDER_TEST_CLASSES -cp $CLASSPATH_TEST -Xlint:deprecation $DIR/src/test/java/*.java;
