@@ -1,3 +1,7 @@
 # Compiled source #
 ###################
 *.class
+
+# Files for Git #
+###################
+*.orig
