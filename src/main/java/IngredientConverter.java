@@ -1,15 +1,6 @@
 public class IngredientConverter{
 
 
-
-  // private float cupVolume = 236f;
-  // private float teaSpoonVolume = 5f;
-  // private float tablespoonVolume = 15f;
-  // private float fluidOzVolume = 30f;
-  // private float literVolume = 1000f;
-  // private float mlVolume = 1f;
-
-
   // Countable Ingredients
   private float largeEggMass = 60f;
 
