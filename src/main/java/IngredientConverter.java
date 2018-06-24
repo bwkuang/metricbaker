@@ -2,18 +2,13 @@ public class IngredientConverter{
 
 
 
-  private float cupVolume = 236f;
-  private float teaSpoonVolume = 5f;
-  private float tablespoonVolume = 15f;
-  private float fluidOzVolume = 30f;
-  private float literVolume = 1000f;
-  private float mlVolume = 1f;
+  // private float cupVolume = 236f;
+  // private float teaSpoonVolume = 5f;
+  // private float tablespoonVolume = 15f;
+  // private float fluidOzVolume = 30f;
+  // private float literVolume = 1000f;
+  // private float mlVolume = 1f;
 
-
-  private float poundMass = 453.592f;
-  private float kiloMass = 1000f;
-  private float ozMass= 28.3495f;
-  private float gramMass = 1f;
 
   // Countable Ingredients
   private float largeEggMass = 60f;
@@ -30,20 +25,12 @@ public class IngredientConverter{
 
   private float getGramsByMassUnit(String unit){
     float mass = 0f;
-
-    // if("pound".compareToIgnoreCase(unit) == 0){
-      // mass = this.poundMass;
-    // }
-    // else if ("kilo".compareToIgnoreCase(unit) == 0 || "kilogramme".compareToIgnoreCase(unit) == 0 || "kg".compareToIgnoreCase(unit) == 0){
-      // mass = this.kiloMass;
-    // }
 	
 	for(UnitOfMass u : UnitOfMass.values()){
       if(u.getUnitName().compareToIgnoreCase(unit) == 0){
         mass = u.getMassInGrams();
       }
-    }
-	
+    }	
     return mass;
   }
 
