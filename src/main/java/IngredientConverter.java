@@ -31,12 +31,19 @@ public class IngredientConverter{
   private float getGramsByMassUnit(String unit){
     float mass = 0f;
 
-    if("pound".compareToIgnoreCase(unit) == 0){
-      mass = this.poundMass;
+    // if("pound".compareToIgnoreCase(unit) == 0){
+      // mass = this.poundMass;
+    // }
+    // else if ("kilo".compareToIgnoreCase(unit) == 0 || "kilogramme".compareToIgnoreCase(unit) == 0 || "kg".compareToIgnoreCase(unit) == 0){
+      // mass = this.kiloMass;
+    // }
+	
+	for(UnitOfMass u : UnitOfMass.values()){
+      if(u.getUnitName().compareToIgnoreCase(unit) == 0){
+        mass = u.getMassInGrams();
+      }
     }
-    else if ("kilo".compareToIgnoreCase(unit) == 0 || "kilogramme".compareToIgnoreCase(unit) == 0 || "kg".compareToIgnoreCase(unit) == 0){
-      mass = this.kiloMass;
-    }
+	
     return mass;
   }
 

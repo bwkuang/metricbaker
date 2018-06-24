@@ -5,15 +5,14 @@ public enum UnitOfMass{
 	ounce("ounce",28.3495f),
 	gram("gram", 1f);
 	
-	private String massName = "";
+	private String unitName = "";
 	private float massInGrams = 0f;
 	
-	public UnitOfMass(String massName, float massInGrams){
+	private UnitOfMass(String unitName, float massInGrams){
 		this.massInGrams = massInGrams;
-		this.massName = massName;
+		this.unitName = unitName;
 	}
 	
-	public void String getMassName(){ return massName;}
-	public void String getMassInGrams(){ return massInGrams;}
-	
+	public String getUnitName(){ return unitName;}
+	public float getMassInGrams(){ return massInGrams;}
 }

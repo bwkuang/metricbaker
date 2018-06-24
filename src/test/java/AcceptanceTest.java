@@ -55,7 +55,7 @@ public class AcceptanceTest{
 
   @Test
   public void ConvertButterKiloTest(){
-    BreadIngredientsConverter.main(new String[] {"butter", "1.25", "kilo"});
+    BreadIngredientsConverter.main(new String[] {"butter", "1.25", "kilogram"});
 
     assertEquals("1250", getActualResult());
   }
