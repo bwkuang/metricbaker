@@ -1,6 +1,9 @@
 public enum UnitOfMass{
-
-	
+  
+	pound("pound",453.592f),
+	kilogram("kilogram", 1000f),
+	ounce("ounce",28.3495f),
+	gram("gram", 1f);
 	
 	private String massName = "";
 	private float massInGrams = 0f;
