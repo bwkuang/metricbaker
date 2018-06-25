@@ -1,19 +1,24 @@
 public class IngredientConverter{
 
-
-  // Countable Ingredients
-  private float largeEggMass = 60f;
-
   public int convert(String ingredient, float amount, String unit){
-    float massInGramsForOneUnit = getGramsByMassUnit(unit);
-
+	
+	if(isIngredientCountable(unit)){
+		return Math.round(amount * getMassByCountable(ingredient));
+	}  
+	  
+	float massInGramsForOneUnit = getGramsByMassUnit(unit);  
+   
     if(massInGramsForOneUnit == 0){
       massInGramsForOneUnit = getVolumeByUnit(unit) * getDensityByIngredient(ingredient);
     }
 
     return Math.round(amount * massInGramsForOneUnit);
   }
-
+  
+  private boolean isIngredientCountable(String unit){
+	return unit.isEmpty() || "unit".compareToIgnoreCase(unit)==0 || "countable".compareToIgnoreCase(unit)==0;
+  }
+  
   private float getGramsByMassUnit(String unit){
     float mass = 0f;
 	
@@ -47,6 +52,17 @@ public class IngredientConverter{
     }
 
     return density;
+  }
+  
+  private float getMassByCountable(String ingredient){
+	float mass = 0f;
+	
+	for(CountableIngredient c : CountableIngredient.values()){
+      if(c.getCountableIngredientName().compareToIgnoreCase(ingredient) == 0){
+        mass = c.getMass();
+      }
+    }	
+    return mass;
   }
 
 }

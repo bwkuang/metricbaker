@@ -48,4 +48,12 @@ public class IngredientConverterTest {
     int actualWeight = converter.convert("butter", 1.25f, "kilogram");
     assertEquals(expectedWeight, actualWeight);
   }
+  
+  @Test
+  public void shouldConvertCountableToGram(){
+	  int expectedWeight = 120;
+	  int actualWeight = converter.convert("large egg", 2, "countable");
+	  
+	  assertEquals(expectedWeight, actualWeight);
+  }
 }
