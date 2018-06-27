@@ -7,7 +7,7 @@ mkdir -p $DIR/build/classes/test/;
 FOLDER_MAIN_CLASSES=$DIR/build/classes/main/
 FOLDER_TEST_CLASSES=$DIR/build/classes/test/
 
-CLASSPATH_JAR=$(echo libs/*.jar | tr ' ' ':');
+CLASSPATH_JAR=$(echo $DIR/libs/*.jar | tr ' ' ':');
 CLASSPATH_MAIN=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR;
 CLASSPATH_TEST=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR:$FOLDER_TEST_CLASSES;
 

@@ -1,42 +1,32 @@
 public class IngredientConverter{
 
-
-
-  private float cupVolume = 236f;
-  private float teaSpoonVolume = 5f;
-  private float tablespoonVolume = 15f;
-  private float fluidOzVolume = 30f;
-  private float literVolume = 1000f;
-  private float mlVolume = 1f;
-
-
-  private float poundMass = 453.592f;
-  private float kiloMass = 1000f;
-  private float ozMass= 28.3495f;
-  private float gramMass = 1f;
-
-  // Countable Ingredients
-  private float largeEggMass = 60f;
-
   public int convert(String ingredient, float amount, String unit){
-    float massInGramsForOneUnit = getGramsByMassUnit(unit);
-
+	
+	if(isIngredientCountable(unit)){
+		return Math.round(amount * getMassByCountable(ingredient));
+	}  
+	  
+	float massInGramsForOneUnit = getGramsByMassUnit(unit);  
+   
     if(massInGramsForOneUnit == 0){
       massInGramsForOneUnit = getVolumeByUnit(unit) * getDensityByIngredient(ingredient);
     }
 
     return Math.round(amount * massInGramsForOneUnit);
   }
-
+  
+  private boolean isIngredientCountable(String unit){
+	return unit.isEmpty() || "unit".compareToIgnoreCase(unit)==0 || "countable".compareToIgnoreCase(unit)==0;
+  }
+  
   private float getGramsByMassUnit(String unit){
     float mass = 0f;
-
-    if("pound".compareToIgnoreCase(unit) == 0){
-      mass = this.poundMass;
-    }
-    else if ("kilo".compareToIgnoreCase(unit) == 0 || "kilogramme".compareToIgnoreCase(unit) == 0 || "kg".compareToIgnoreCase(unit) == 0){
-      mass = this.kiloMass;
-    }
+	
+	for(UnitOfMass u : UnitOfMass.values()){
+      if(u.getUnitName().compareToIgnoreCase(unit) == 0){
+        mass = u.getMassInGrams();
+      }
+    }	
     return mass;
   }
 
@@ -62,6 +52,17 @@ public class IngredientConverter{
     }
 
     return density;
+  }
+  
+  private float getMassByCountable(String ingredient){
+	float mass = 0f;
+	
+	for(CountableIngredient c : CountableIngredient.values()){
+      if(c.getCountableIngredientName().compareToIgnoreCase(ingredient) == 0){
+        mass = c.getMass();
+      }
+    }	
+    return mass;
   }
 
 }

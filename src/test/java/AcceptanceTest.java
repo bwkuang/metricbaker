@@ -55,9 +55,16 @@ public class AcceptanceTest{
 
   @Test
   public void ConvertButterKiloTest(){
-    BreadIngredientsConverter.main(new String[] {"butter", "1.25", "kilo"});
+    BreadIngredientsConverter.main(new String[] {"butter", "1.25", "kilogram"});
 
     assertEquals("1250", getActualResult());
+  }
+  
+  @Test
+  @Ignore
+  public void ConvertMultipleIngredients(){
+	  BreadIngredientsConverter.main(new String[] {getMulitpleIngredients()});
+	  assertEquals(getMulitpleIngredientsExpectedResult(), getActualResult());
   }
 
   private void redirectSystemOut(){
@@ -75,5 +82,13 @@ public class AcceptanceTest{
     return this.baos.toString();
   }
 
+  private String getMulitpleIngredients(){
+	  String ingredients = "{\r\n\t\"ingredients\":\r\n\t[\r\n\t\t{\r\n\t\t\t\"ingredient\":\"sugar\",\r\n\t\t\t\"amount\":\"0.5\",\r\n\t\t\t\"unit\":\"cup\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ingredient\":\"salt\",\r\n\t\t\t\"amount\":\"2.25\",\r\n\t\t\t\"unit\":\"teaspoon\"\r\n\t\t}\r\n\t]\r\n}";
+	  return ingredients;
+  }
+  
+  private String getMulitpleIngredientsExpectedResult(){
+	  return "{\r\n\t\"ingredients\":\r\n\t[\r\n\t\t{\r\n\t\t\t\"ingredient\":\"sugar\",\r\n\t\t\t\"amount\":\"100\",\r\n\t\t\t\"unit\":\"gram\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ingredient\":\"salt\",\r\n\t\t\t\"amount\":\"14\",\r\n\t\t\t\"unit\":\"gram\"\r\n\t\t}\r\n\t]\r\n}";
+  }
 
 }
