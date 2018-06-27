@@ -15,5 +15,4 @@ CLASSPATH_TEST=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR:$FOLDER_TEST_CLASSES;
 javac -d $FOLDER_MAIN_CLASSES -cp $CLASSPATH_MAIN $DIR/src/main/java/*.java;
 
 # Compile tests
-echo $CLASSPATH_TEST
 javac -d $FOLDER_TEST_CLASSES -cp $CLASSPATH_TEST -Xlint:deprecation $DIR/src/test/java/*.java;
