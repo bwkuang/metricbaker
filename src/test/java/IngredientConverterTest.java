@@ -2,6 +2,7 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import  org.json.JSONObject;
 
 
 public class IngredientConverterTest {
@@ -56,4 +57,24 @@ public class IngredientConverterTest {
 	  
 	  assertEquals(expectedWeight, actualWeight);
   }
+
+  @Test
+  public void shouldConvertMultipleIngredients(){
+    JSONObject expectedResult = getMulitpleIngredientsExpectedResult();
+    JSONObject actualResult = converter.convert(getMulitpleIngredients());
+    assertEquals(expectedResult, actualResult);
+  }
+
+  private JSONObject getMulitpleIngredients(){
+	  String ingredients = "{\r\n\t\"ingredients\":\r\n\t[\r\n\t\t{\r\n\t\t\t\"ingredient\":\"sugar\",\r\n\t\t\t\"amount\":\"0.5\",\r\n\t\t\t\"unit\":\"cup\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ingredient\":\"salt\",\r\n\t\t\t\"amount\":\"2.25\",\r\n\t\t\t\"unit\":\"teaspoon\"\r\n\t\t}\r\n\t]\r\n}";
+	  
+    return new JSONObject(ingredients);
+  }
+  
+  private JSONObject getMulitpleIngredientsExpectedResult(){
+	  String ingredients = "{\r\n\t\"ingredients\":\r\n\t[\r\n\t\t{\r\n\t\t\t\"ingredient\":\"sugar\",\r\n\t\t\t\"amount\":\"100\",\r\n\t\t\t\"unit\":\"gram\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ingredient\":\"salt\",\r\n\t\t\t\"amount\":\"14\",\r\n\t\t\t\"unit\":\"gram\"\r\n\t\t}\r\n\t]\r\n}";
+
+    return new JSONObject(ingredients);
+  }
+  
 }
