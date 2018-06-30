@@ -2,6 +2,9 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static uk.co.datumedge.hamcrest.json.SameJSONAs.sameJSONObjectAs;
 import  org.json.JSONObject;
 
 
@@ -62,7 +65,7 @@ public class IngredientConverterTest {
   public void shouldConvertMultipleIngredients(){
     JSONObject expectedResult = getMulitpleIngredientsExpectedResult();
     JSONObject actualResult = converter.convert(getMulitpleIngredients());
-    assertEquals(expectedResult, actualResult);
+    assertThat(expectedResult , sameJSONObjectAs(actualResult));
   }
 
   private JSONObject getMulitpleIngredients(){
