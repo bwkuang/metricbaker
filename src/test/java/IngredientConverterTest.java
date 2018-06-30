@@ -40,6 +40,14 @@ public class IngredientConverterTest {
   }
 
   @Test
+  public void shouldConvertFlourFromCupToGramNew(){
+    int expectedWeight = 137;
+    Ingredient breadFlour = Ingredient.breadFlour(1f, UnitOfVolume.cup);
+
+    assertEquals(expectedWeight, breadFlour.getWeight());
+  }
+
+  @Test
   public void shouldConvertButterFromPoundToGram(){
     int expectedWeight = 113;
     int actualWeight = converter.convert("butter", 0.25f, "pound");
