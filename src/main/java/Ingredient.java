@@ -10,11 +10,17 @@ public class Ingredient {
         this.unitOfVolume = unitOfVolume;
     }
 
-    public static Ingredient breadFlour(float amount, UnitOfVolume unitOfVolume){
-        return new Ingredient("Bread Flour", amount, unitOfVolume);
+    public int getWeight(){
+        float volume = UnitOfVolume.getVolumeByUnit(unitOfVolume.getUnitName());
+        float density = IngredientDensity.getDensityByIngredient(name);
+        return  Math.round(volume * density);
     }
 
-    public int getWeight(){
-        return  137;
+    public static Ingredient breadFlour(float amount, UnitOfVolume unitOfVolume){
+        return new Ingredient("bread flour", amount, unitOfVolume);
+    }
+
+    public static Ingredient sugar(float amount, UnitOfVolume unitOfVolume){
+        return new Ingredient("sugar", amount, unitOfVolume);
     }
 }

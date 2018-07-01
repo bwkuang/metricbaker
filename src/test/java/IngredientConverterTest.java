@@ -18,30 +18,14 @@ public class IngredientConverterTest {
   }
 
   @Test
-  public void shouldConvertFlourFromCupToGram(){
-    int expectedWeight = 137;
-    int actualWeight = converter.convert("Bread flour", 1f, "cup");
-
-    assertEquals(expectedWeight, actualWeight);
-  }
-
-  @Test
   public void shouldConvertSugarFromCupToGram(){
     int expectedWeight = 201;
-    int actualWeight = converter.convert("sugar", 1f, "cup");
-    assertEquals(expectedWeight, actualWeight);
-  }
-
-  
-  @Test
-  public void shouldConvertSaltFromTeaspoonToGramOld(){
-    int expectedWeight = 3;
-    int actualWeight = converter.convert("salt", 0.5f, "teaspoon");
-    assertEquals(expectedWeight, actualWeight);
+    Ingredient sugar = Ingredient.sugar(1f, UnitOfVolume.cup);
+    assertEquals(expectedWeight, sugar.getWeight());
   }
 
   @Test
-  public void shouldConvertFlourFromCupToGramNew(){
+  public void shouldConvertFlourFromCupToGram(){
     int expectedWeight = 137;
     Ingredient breadFlour = Ingredient.breadFlour(1f, UnitOfVolume.cup);
 
