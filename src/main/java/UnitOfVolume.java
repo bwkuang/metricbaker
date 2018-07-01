@@ -23,4 +23,16 @@ public enum UnitOfVolume{
     return volume;
   }
 
+  public static float getVolumeByUnit(String unit){
+    float volume = 0f;
+
+    for(UnitOfVolume u : UnitOfVolume.values()){
+      if(u.getUnitName().compareToIgnoreCase(unit) == 0){
+        volume = u.getVolume();
+      }
+    }
+    
+    return volume;
+  }
+
 }

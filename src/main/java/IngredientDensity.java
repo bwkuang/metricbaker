@@ -25,4 +25,16 @@ public enum IngredientDensity{
     return density;
   }
 
+  public static float getDensityByIngredient(String ingredient){
+    float density = 0f;
+
+    for(IngredientDensity d : IngredientDensity.values()){
+      if(d.getIngredientName().compareToIgnoreCase(ingredient) == 0){
+        density = d.getDensity();
+      }
+    }
+
+    return density;
+  }
+
 }

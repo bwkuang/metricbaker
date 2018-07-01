@@ -13,4 +13,14 @@ public enum CountableIngredient{
 	public String getCountableIngredientName() {return countableIngredientName;}
 	public float getMass() {return mass;}
 
+	public static float getMassByCountable(String ingredient){
+		float mass = 0f;
+		
+		for(CountableIngredient c : CountableIngredient.values()){
+		  if(c.getCountableIngredientName().compareToIgnoreCase(ingredient) == 0){
+			mass = c.getMass();
+		  }
+		}	
+		return mass;
+	  }
 }

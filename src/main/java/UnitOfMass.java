@@ -14,5 +14,18 @@ public enum UnitOfMass{
 	}
 	
 	public String getUnitName(){ return unitName;}
+	
 	public float getMassInGrams(){ return massInGrams;}
+
+	public static float getGramsByMassUnit(String unit){
+		float mass = 0f;
+		
+		for(UnitOfMass u : UnitOfMass.values()){
+		  if(u.getUnitName().compareToIgnoreCase(unit) == 0){
+			mass = u.getMassInGrams();
+		  }
+		}	
+		return mass;
+	}
+
 }

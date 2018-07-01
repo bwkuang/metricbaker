@@ -32,8 +32,9 @@ public class IngredientConverterTest {
     assertEquals(expectedWeight, actualWeight);
   }
 
+  
   @Test
-  public void shouldConvertSaltFromTeaspoonToGram(){
+  public void shouldConvertSaltFromTeaspoonToGramOld(){
     int expectedWeight = 3;
     int actualWeight = converter.convert("salt", 0.5f, "teaspoon");
     assertEquals(expectedWeight, actualWeight);
