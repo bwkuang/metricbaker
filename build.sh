@@ -1,18 +1,41 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+ROOTPATH="";
+MAIN_CLASSPATH="";
+TEST_CLASSPATH="";
+JARPATH="";
 
-mkdir -p $DIR/tmp/;
-mkdir -p $DIR/build/classes/main/java;
-mkdir -p $DIR/build/classes/test/java;
+setPathToProjectRoot() {
+    ROOTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+}
 
-FOLDER_MAIN_CLASS_ROOT=$DIR/build/classes/main/java;
-FOLDER_TEST_CLASS_ROOT=$DIR/build/classes/test/java;
+setPathsToBinaries() {
+    MAIN_CLASSPATH=$ROOTPATH/build/classes/main/java;
+    TEST_CLASSPATH=$ROOTPATH/build/classes/test/java;
+    JARPATH=$(echo $ROOTPATH/libs/*.jar | tr ' ' ':');
+}
 
-CLASSPATH_JAR=$(echo $DIR/libs/*.jar | tr ' ' ':');
-CLASSPATH_MAIN=$FOLDER_MAIN_CLASS_ROOT:$CLASSPATH_JAR;
-CLASSPATH_TEST=$FOLDER_MAIN_CLASS_ROOT:$CLASSPATH_JAR:$FOLDER_TEST_CLASS_ROOT;
+setClassPath() {
+    CLASSPATH=$MAIN_CLASSPATH:$JARPATH:$TEST_CLASSPATH;
+}
 
-# Compile main application
-javac -d $FOLDER_MAIN_CLASS_ROOT -cp $CLASSPATH_MAIN $DIR/src/main/java/metricbaker/*.java;
+createBinaryFolderStructure() {
+    mkdir -p $ROOTPATH/tmp;
+    mkdir -p $MAIN_CLASSPATH;
+    mkdir -p $TEST_CLASSPATH;
+}
 
-# Compile tests
-javac -d $FOLDER_TEST_CLASS_ROOT -cp $CLASSPATH_TEST -Xlint:deprecation $DIR/src/test/java/metricbaker/*.java;
+compileMainApplication() {
+    javac -d $MAIN_CLASSPATH -cp $CLASSPATH $ROOTPATH/src/main/java/metricbaker/*.java;
+}
+
+compileTests() {
+    javac -d $TEST_CLASSPATH -cp $CLASSPATH -Xlint:deprecation $ROOTPATH/src/test/java/metricbaker/*.java;
+}
+
+##########################
+
+setPathToProjectRoot;
+setPathsToBinaries;
+setClassPath;
+createBinaryFolderStructure;
+compileMainApplication;
+compileTests;
