@@ -1,3 +1,5 @@
+package metricbaker;
+
 public enum CountableIngredient{
 
 	largeEgg("large egg", 60f);

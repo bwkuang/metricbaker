@@ -1,3 +1,5 @@
+package metricbaker;
+
 public enum IngredientDensity{
 
   allPurposeFlour("all purpose flour", 0.53f),
