@@ -1,5 +1,8 @@
 package metricbaker;
 
+import jdk.nashorn.internal.runtime.regexp.joni.ast.QuantifierNode;
+import metricbaker.IngredientDensity;
+import metricbaker.Quantity;
 import metricbaker.UnitOfMass;
 import metricbaker.UnitOfVolume;
 
@@ -7,8 +10,14 @@ public class Ingredient {
 
     private String name;
     private float amount;
+    private Quantity quantity;
     private UnitOfVolume unitOfVolume = UnitOfVolume.none;
     private UnitOfMass unitOfMass = UnitOfMass.none;
+
+    private Ingredient(String name, Quantity quantity){
+        this.name = name;
+        this.quantity = quantity;
+    }
 
     private Ingredient(String name, float amount, UnitOfVolume unitOfVolume){
         this.name = name;
@@ -23,24 +32,26 @@ public class Ingredient {
     }
 
     public int getWeight(){
-        float volume = UnitOfVolume.getVolumeByUnit(unitOfVolume.getUnitName());
+        float volume = unitOfVolume.getVolumeInMl();
         float density = IngredientDensity.getDensityByIngredient(name);
 
-        float unitMassInGram = UnitOfMass.getGramsByMassUnit(unitOfMass.getUnitName());
+        float unitMassInGram = unitOfMass.getMassInGrams();
 
-        return  Math.max(Math.round(volume * density), Math.round(amount * unitMassInGram));
+        return quantity.getWeight(IngredientDensity.getDensityByIngredient(this.name));
+
+        // return  Math.max(Math.round(volume * density), Math.round(amount * unitMassInGram));
     }
 
-    public static Ingredient breadFlour(float amount, UnitOfVolume unitOfVolume){
-        return new Ingredient("bread flour", amount, unitOfVolume);
+    public static Ingredient breadFlour(Quantity quantity){
+        return new Ingredient("bread flour", quantity);
     }
 
-    public static Ingredient sugar(float amount, UnitOfVolume unitOfVolume){
-        return new Ingredient("sugar", amount, unitOfVolume);
+    public static Ingredient sugar(Quantity quantity){
+        return new Ingredient("sugar", quantity);
     }
 
-    public static Ingredient butter(float amount, UnitOfMass unitOfMass){
-        return new Ingredient("butter", amount, unitOfMass);
+    public static Ingredient butter(Quantity quantity){
+        return new Ingredient("butter", quantity);
     }
 
 }

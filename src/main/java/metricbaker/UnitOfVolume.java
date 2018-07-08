@@ -22,7 +22,7 @@ public enum UnitOfVolume{
     return unitName;
   }
 
-  public float getVolume(){
+  public float getVolumeInMl(){
     return volume;
   }
 
@@ -31,7 +31,7 @@ public enum UnitOfVolume{
 
     for(UnitOfVolume u : UnitOfVolume.values()){
       if(u.getUnitName().compareToIgnoreCase(unit) == 0){
-        volume = u.getVolume();
+        volume = u.getVolumeInMl();
       }
     }
     
