@@ -51,12 +51,11 @@ public class IngredientConverterTest {
   }
   
   @Test
-  @Ignore
   public void shouldConvertCountableToGram(){
-	  int expectedWeight = 120;
-	  int actualWeight = converter.convert("large egg", 2, "countable");
+    int expectedWeight = 120;
+    Ingredient ingredient = CountableIngredient.largeEgg(2);
 	  
-	  assertEquals(expectedWeight, actualWeight);
+	  assertEquals(expectedWeight, ingredient.getWeight());
   }
 
   @Test

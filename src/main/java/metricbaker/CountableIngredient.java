@@ -1,28 +1,24 @@
 package metricbaker;
 
-public enum CountableIngredient{
-
-	largeEgg("large egg", 60f);
+public class CountableIngredient extends Ingredient{
 
 	private String countableIngredientName="";
 	private float mass=0f;
 
 	private CountableIngredient(String countableIngredientName, float mass){
+		super(countableIngredientName, new Quantity(1f, UnitOfMass.kilogram));
 		this.countableIngredientName=countableIngredientName;
 		this.mass=mass;
 	}
 	
 	public String getCountableIngredientName() {return countableIngredientName;}
-	public float getMass() {return mass;}
+	public int getWeight() {return (int)mass;}
+
+	public static CountableIngredient largeEgg(int amount){
+		return new CountableIngredient("large egg", (float)amount * 60f);
+	}
 
 	public static float getMassByCountable(String ingredient){
-		float mass = 0f;
-		
-		for(CountableIngredient c : CountableIngredient.values()){
-		  if(c.getCountableIngredientName().compareToIgnoreCase(ingredient) == 0){
-			mass = c.getMass();
-		  }
-		}	
-		return mass;
-	  }
+		return 60f;
+	}
 }

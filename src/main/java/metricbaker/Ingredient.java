@@ -8,11 +8,11 @@ import metricbaker.UnitOfVolume;
 
 public class Ingredient {
 
-    private String name;
-    private float amount;
-    private Quantity quantity;
+    protected String name;
+    protected float amount;
+    protected Quantity quantity;
 
-    private Ingredient(String name, Quantity quantity){
+    protected Ingredient(String name, Quantity quantity){
         this.name = name;
         this.quantity = quantity;
     }
