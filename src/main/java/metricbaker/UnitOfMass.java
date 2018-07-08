@@ -2,6 +2,7 @@ package metricbaker;
 
 public enum UnitOfMass{
   
+	none("none", 0f),
 	pound("pound",453.592f),
 	kilogram("kilogram", 1000f),
 	ounce("ounce",28.3495f),

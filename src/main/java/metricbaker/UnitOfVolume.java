@@ -2,6 +2,7 @@ package metricbaker;
 
 public enum UnitOfVolume{
 
+  none("none", 0f),
   cup("cup", 236),
   teaSpoonVolume("teaspoon",5f),
   tablespoonVolume("tablespoon",15f),
