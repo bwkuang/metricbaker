@@ -1,14 +1,30 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+ROOTPATH="";
+MAIN_CLASSPATH="";
+TEST_CLASSPATH="";
+JARPATH="";
 
-mkdir -p $DIR/tmp/;
-mkdir -p $DIR/build/classes/main/;
-mkdir -p $DIR/build/classes/test/;
+setPathToProjectRoot() {
+    ROOTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+}
 
-FOLDER_MAIN_CLASSES=$DIR/build/classes/main/
-FOLDER_TEST_CLASSES=$DIR/build/classes/test/
+setPathsToBinaries() {
+    MAIN_CLASSPATH=$ROOTPATH/build/classes/main/java;
+    TEST_CLASSPATH=$ROOTPATH/build/classes/test/java;
+    JARPATH=$(echo $ROOTPATH/libs/*.jar | tr ' ' ':');
+}
 
-CLASSPATH_JAR=$(echo $DIR/libs/*.jar | tr ' ' ':');
-CLASSPATH=$FOLDER_MAIN_CLASSES:$CLASSPATH_JAR:$FOLDER_TEST_CLASSES;
+setClassPath() {
+    CLASSPATH=$MAIN_CLASSPATH:$JARPATH:$TEST_CLASSPATH;
+}
 
-java -cp $CLASSPATH org.junit.runner.JUnitCore IngredientConverterTest
-java -cp $CLASSPATH org.junit.runner.JUnitCore AcceptanceTest
+runTests(){
+    java -cp $CLASSPATH org.junit.runner.JUnitCore metricbaker.IngredientConverterTest
+    java -cp $CLASSPATH org.junit.runner.JUnitCore metricbaker.AcceptanceTest
+}
+
+##########################
+
+setPathToProjectRoot;
+setPathsToBinaries;
+setClassPath;
+runTests;
